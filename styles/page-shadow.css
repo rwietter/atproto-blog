@@ -1,0 +1,18 @@
+.page-shadow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  pointer-events: none;
+  transition:
+    var(--transition-primary),
+    background-image 200ms ease;
+  background-image: linear-gradient(180deg,
+      var(--bg-alt-color),
+      hsla(0, 0%, 100%, 0) 20%,
+      hsla(0, 0%, 100%, 0) 60%,
+      hsla(0, 0%, 100%, 0) 80%,
+      var(--bg-alt-color));
+}

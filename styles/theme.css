@@ -1,0 +1,63 @@
+:root {
+  --bg-color: #ffffff;
+  --bg-alt-color: #f2f3f7;
+  --text-color: #1c2334;
+  --text-gray-color: #555969;
+  --text-alt-color: #080808;
+  --caret-color: #1c2334;
+  --main-color: #8338ec;
+  --sub-color: #c9c9cf;
+  --sub-alt-color: #f4f4f6;
+  --select: #4433ff;
+  --highlight: #afb8c133;
+  --highlight-text: #000000;
+  --cb-bg-color: rgba(255, 255, 255, 0.6);
+  --cb-box-alt-color: rgba(0, 0, 0, 0.1);
+  --neutral: #dfe3e6;
+  --success: #98ffc3;
+  --error: #f78890;
+  --warning: #f7d794;
+  --info: #81ecec;
+
+  --transition-primary: color 200ms ease, background 200ms ease,
+    border-color 200ms ease, box-shadow 200ms ease, fill 200ms ease,
+    stroke 200ms ease;
+
+  --system-ui: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-primary: Inter, sans-serif;
+  --font-tex: KaTeX_Math;
+  --font-secondary: "Noto Serif", serif;
+  --font-title: var(--font-secondary), Inter, sans-serif;
+  --font-code: ui-monospace, PT Mono, Consolas, Monaco, "Andale Mono",
+    "Ubuntu Mono", monospace;
+  --font-bolder: Inter, sans-serif;
+}
+
+.dark:root {
+  --bg-color: #000000;
+  --bg-alt-color: #121212;
+  --text-color: #fafafa;
+  --text-gray-color: #b1b1b1;
+  --text-alt-color: #ffffff;
+  --caret-color: #0f0f11;
+  --main-color: #778eff;
+  --sub-color: #0f0f11;
+  --sub-alt-color: #0f0f11;
+  --error-color: #ff4754;
+  --highlight: #afb8c133;
+  --highlight-text: #f6f5f5;
+  --select: #617bff;
+  --cb-bg-color: rgba(0, 0, 0, 0.6);
+  --cb-box-alt-color: rgba(255, 255, 255, 0.1);
+  --neutral: #3a4048;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: var(--transition-primary);
+  font-family: var(--font-primary);
+  font-style: normal;
+  font-display: swap;
+}

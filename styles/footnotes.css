@@ -1,0 +1,87 @@
+.footnotes {
+  margin-top: 2em;
+  border-top: 1px solid var(--neutral);
+  --fluid-type-max: 1.05em;
+  --fluid-type-min: 0.9em;
+  --fluid-type-target: 4vw;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  word-wrap: normal;
+  border: 0;
+}
+
+[data-footnote-ref]::before {
+  content: "[";
+  color: var(--main-color);
+  font-size: 16px;
+  font-weight: 600;
+  margin-right: -1px;
+  font-variant-position: super;
+}
+
+[data-footnote-ref]::after {
+  content: "]";
+  color: var(--main-color);
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: -1px;
+  font-variant-position: super;
+}
+
+sup a[aria-describedby="footnote-label"] {
+  font-weight: 500;
+  color: var(--main-color);
+  font-size: 14px;
+  font-family: var(--font-code);
+  font-style: normal;
+  text-decoration: none;
+}
+
+sup a[aria-describedby="footnote-label"]:hover {
+  text-decoration: underline;
+}
+
+section[data-footnotes].footnotes ol li::marker {
+  content: "[" counter(list-item) "]: ";
+  color: var(--main-color);
+  font-weight: 500;
+}
+
+.footnotes ol {
+  padding: 1em 0 1em 2px;
+}
+
+.footnotes ol li + li {
+  margin: 1em 0;
+}
+
+.footnotes ol li p {
+  margin: 0;
+  color: var(--text-color);
+  text-align: left;
+  line-height: 1.7;
+  width: 100% !important;
+}
+
+.footnotes ol li p a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.footnotes ol li p a:hover {
+  text-decoration: underline;
+  color: var(--main-color);
+}
+
+@media (min-width: 720px) {
+  .footnotes ol li p {
+    line-height: 1.5;
+  }
+}

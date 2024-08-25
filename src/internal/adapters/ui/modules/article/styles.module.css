@@ -1,0 +1,7 @@
+.articleMarkdownContainer {
+  width: 100%;
+  padding-top: 1.2rem;
+  margin: 0 auto;
+  background: var(--bg-color);
+  transition: var(--transition-primary);
+}

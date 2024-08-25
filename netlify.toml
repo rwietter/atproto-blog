@@ -1,0 +1,14 @@
+[context.production]
+  command = "pnpm run build"
+  publish = ".next"
+#
+# [context.staging]
+#   command = "yarn build"
+#   publish = ".next" 
+
+[functions]
+  external_node_modules = ["sharp"] # fix "Error: Cannot find module 'sharp'"
+  included_files = ["node_modules/sharp/**/*"] 
+
+# [[plugins]]
+  # package = "@netlify/plugin-nextjs"

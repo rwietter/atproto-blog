@@ -1,0 +1,13 @@
+.micropost {
+  padding: 1rem 0;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.micropost .date {
+  display: inline-block;
+  --fluid-type-min: 0.8rem;
+  --fluid-type-max: 0.9rem;
+  --fluid-type-target: 1vw;
+  padding: 0.2em 0 0.4em 0;
+}

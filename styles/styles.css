@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scrollbar-color: var(--main-color) var(--bg-alt-color);
+}
+
+body {
+  line-height: 1.8;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@supports (-webkit-font-smoothing: antialiased) {
+  body {
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@supports not (-moz-osx-font-smoothing: antialiased) {
+  body {
+    -moz-osx-font-smoothing: subpixel-antialiased;
+  }
+}
+
+span img {
+  object-fit: cover !important;
+}
+
+a {
+  text-decoration: none;
+  text-underline-position: under;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+a,
+p,
+time,
+pre,
+strong,
+button,
+code,
+samp,
+figcaption,
+blockquote,
+li,
+tt {
+  font-size: clamp(
+    var(--fluid-type-min, 1rem),
+    calc(0.5rem + var(--fluid-type-target, 3vw)),
+    var(--fluid-type-max, 1.1rem)
+  );
+  text-rendering: geometricPrecision;
+}
+
+p {
+  font-feature-settings:
+    "liga" 1,
+    "ss03" 1,
+    "ss01" 1,
+    "calt" 1,
+    "cv01" 1,
+    "cv09" 1,
+    "cv02" 1,
+    "cv03" 1,
+    "cv04" 1,
+    "ss02" 1,
+    "zero" 1,
+    "cv05" 1,
+    "cv08" 1,
+    "cv12" 1,
+    "cv13" 1,
+    "cv10" 1,
+    "cv06" 1,
+    "cv11" 1;
+  font-variant-ligatures: common-ligatures;
+}

@@ -1,0 +1,30 @@
+# *
+User-agent: *
+Allow: /*
+
+# Twitterbot
+User-agent: Twitterbot
+Allow: /*
+
+# Googlebot
+User-agent: Googlebot
+Allow: /*
+
+# Bingbot
+User-agent: Bingbot
+Allow: /*
+
+# Slurp
+User-agent: Slurp
+Allow: /*
+
+# DuckDuckBot
+User-agent: DuckDuckBot
+Allow: /*
+
+# Host
+Host: https://rwietter.dev/
+
+# Sitemaps
+Sitemap: https://rwietter.dev/sitemap.xml
+Sitemap: https://rwietter.dev/sitemap-0.xml

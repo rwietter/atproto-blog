@@ -1,0 +1,27 @@
+.articlesContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+}
+
+.articlesContainer h1 {
+  font-family: var(--font-secondary);
+  color: var(--text-color);
+  font-weight: 500;
+  --fluid-type-min: 1.1rem;
+  --fluid-type-max: 2rem;
+  --fluid-type-target: 5vw;
+}
+
+.articlesContainer h1 strong {
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  font-weight: 600;
+  text-decoration-color: var(--main-color);
+}
+
+.articlesContainer ul {
+  padding: 2rem 0;
+  margin: 0;
+  list-style: none;
+}

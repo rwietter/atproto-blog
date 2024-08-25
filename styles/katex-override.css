@@ -1,0 +1,26 @@
+.katex span {
+  --fluid-type-target: 2.5vw;
+  --fluid-type-max: 1.3rem;
+  --fluid-type-min: 1rem;
+  font-display: swap;
+}
+
+.katex-html .base {
+  line-height: 1.5 !important;
+}
+
+.katex-display {
+  margin: 1.3em 0 !important;
+  padding: 1em;
+  font-display: swap;
+}
+
+.katex-display .text span {
+  font-family: var(--font-tex) !important;
+}
+
+.katex-display span {
+  --fluid-type-target: 2.5vw;
+  --fluid-type-max: 1.3rem;
+  --fluid-type-min: 1rem;
+}
