@@ -4,8 +4,8 @@ import Providers from "./providers";
 
 import styles from "./styles.module.css";
 
-import Header from "@/adapters/ui/components/Header";
-import StickyBar from "@/adapters/ui/components/StickyBar";
+import Header from "@/ui/components/Header";
+import StickyBar from "@/ui/components/StickyBar";
 
 import "../../styles/page-shadow.css";
 import "../../styles/styles.css";
