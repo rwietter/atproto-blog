@@ -1,36 +1,12 @@
-<h2 align="center">Maurício Witter - My Personal Website</h2>
+<h2 align="center">AT Proto WhiteWind | Blog Template</h2>
 
-<div align="center">
-  <img src="./public/mock.png" alt="device screenshot of the website" />
-</div>
+This is a personal website and blog built with the **[AT Protocol](https://atproto.com/guides/overview)**, **[WhiteWind](https://whtwnd.com/about)**, and **Next.js**. The architecture of the project is based on Ports and Adapters, but it's very simple to understand, use, and customize.
 
-## Features
-
-- [x] Homepage
-- [x] Blog list
-- [x] Blog Post
-- [x] Projects
-- [x] Theme Switcher
-- [x] ISR (Incremental Static Regeneration)
-- [x] Portfolio
-- [x] SEO
-- [x] PWA (Progressive Web App)
-- [x] Feed RSS (XML, JSON, ATOM)
-- [x] Sitemap
-- [x] Robots.txt
-- [x] Vercel Analytics
-- [ ] About
-- [ ] [i18n](https://i18nexus.com/tutorials/nextjs/react-i18next)
-- [x] Loading
-- [ ] Pagination
-- [x] Code splitting
-- [ ] Search by tags
-- [ ] Match theme with OS
-- [ ] Font loading https://web.dev/i18n/pt/optimize-webfont-loading/
+Credits to [@haileyok](https://github.com/haileyok) for inspiring me to create this project and for the atproto API source code.
 
 ## License
 
-The source-code is under the [MIT license](LICENSE) and the blog posts are under the [CC BY-SA 4.0](LICENSE-posts) license
+The source code is under the [MIT license](LICENSE), and the blog posts are under the [CC BY-SA 4.0](LICENSE-posts) license.
 
 [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa] [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
