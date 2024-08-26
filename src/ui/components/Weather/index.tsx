@@ -1,6 +1,6 @@
+import type { Weather } from '@/infra/api/weather/types'
 import type { FC } from 'react'
 import { RiSunCloudyLine } from 'react-icons/ri'
-import type { Weather } from 'src/internal/Infrastructure/api/weather/types'
 import styles from './styles.module.css'
 
 interface WeatherPropsTypes {

@@ -1,16 +1,12 @@
+import type { LastFmTrackProps, TrackProps } from "@/infra/api/lastfm/types";
 import Image from "next/image";
-import { type FC, useDebugValue } from "react";
+import type { FC } from "react";
 import { PiMusicNote, PiStop } from "react-icons/pi";
 import { RiPauseMiniFill } from "react-icons/ri";
-import type {
-	LastFmTrackProps,
-	TrackProps,
-} from "src/internal/Infrastructure/api/lastfm/types";
 import styles from "./styles.module.css";
 
 export const LastFMTrack: FC<LastFmTrackProps> = ({ lastFm }) => {
 	const track: TrackProps = lastFm?.recenttracks?.track[0];
-	useDebugValue(track);
 
 	if (!track) return <span />;
 

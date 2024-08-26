@@ -1,7 +1,7 @@
-import type { ATProtoPort } from "@/ports/output/atprotoPort";
+import type { BlogPostPort } from "@/ports/output/blogPostPort";
 
-export const getBlogPosts = async (atproto: ATProtoPort) => {
-	const posts = await atproto.getPosts();
+export const getBlogPosts = async (blogPostPort: BlogPostPort) => {
+	const posts = await blogPostPort.getPosts();
 
 	const postsShortened = posts.map((post) => ({
 		...post,

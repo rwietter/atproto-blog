@@ -1,15 +1,13 @@
-import { Feed } from 'feed'
+import type { Post } from '@/core/entities/Post'
+import type { Profile } from '@/core/entities/Profile'
+import { Feed, type FeedOptions } from 'feed'
 import fs from 'node:fs'
 import { remark } from 'remark'
 import remarkHtml from 'remark-html'
-import type {
-  BskyProfileView,
-  WhtwndBlogEntryView,
-} from 'src/internal/Infrastructure/api/atproto'
 
 interface RssFeedProps {
-  profile: BskyProfileView
-  posts: WhtwndBlogEntryView[]
+  profile: Profile
+  posts: Post[]
 }
 
 const generateRssFeed = async ({
@@ -18,19 +16,15 @@ const generateRssFeed = async ({
 }: RssFeedProps): Promise<void> => {
   const url = process.env.SITE_URL || 'https://rwietter.dev'
 
-  const feedOptions = {
+  const feedOptions: FeedOptions = {
     title: `${profile.displayName} | Blog RSS Feed`,
     description: `Follow the latest posts from ${profile.displayName}\'s blog on this RSS feed.`,
-    site_url: url,
-    feed_url: `${url}/rss.xml`,
-    image_url: `${url}/icons/mstile-310x310.png`,
-    pubDate: new Date(),
     copyright: `Copyright © ${new Date().getFullYear()} ${profile.displayName}. All rights reserved.`,
     id: url,
     author: {
-      email: 'mauriciobw17@gmail.com',
+      email: 'rwietter@duck.com',
       name: profile.displayName,
-      link: 'https://twitter.com/rwietter',
+      link: 'https://bsky.app/profile/did:plc:l4rdag2x2gkyq5zkgb46pbzl',
     },
     favicon: `${url}/favicon.ico`,
     feedLinks: {
@@ -44,6 +38,8 @@ const generateRssFeed = async ({
     updated: new Date(),
     language: 'en',
     feed: `${url}/rss.xml`,
+    docs: 'https://validator.w3.org/feed/docs/rss2.html',
+    hub: 'https://pubsubhubbub.appspot.com/',
   }
 
   const feed = new Feed(feedOptions)
@@ -52,10 +48,10 @@ const generateRssFeed = async ({
     feed.addItem({
       title: post.title,
       description: post.content,
-      link: `${url}/blog/article/${post.rkey}`,
-      guid: post.rkey,
+      link: `${url}/blog/article/${post.id}?key=${post.id}`,
+      guid: post.id,
       published: new Date(post.createdAt),
-      id: `${url}/blog/article/${post.rkey}`,
+      id: `${url}/blog/article/${post.id}?key=${post.id}`,
       content: remark().use(remarkHtml).processSync(post.content).toString(),
       copyright: feedOptions.copyright,
       date: new Date(post.createdAt),
@@ -63,7 +59,7 @@ const generateRssFeed = async ({
         {
           email: 'mauriciobw17@gmail.com',
           name: 'Maurício Witter',
-          link: 'https://twitter.com/rwietter',
+          link: 'https://bsky.app/profile/did:plc:l4rdag2x2gkyq5zkgb46pbzl',
         },
       ],
     })

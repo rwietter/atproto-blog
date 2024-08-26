@@ -1,9 +1,9 @@
 import type { Post } from "@/core/entities/Post";
 import type { Profile } from "@/core/entities/Profile";
 import { getPost, getPosts, getProfile } from "@/infra/api/atproto";
-import type { ATProtoPort } from "@/ports/output/atprotoPort";
+import type { BlogPostPort } from "@/ports/output/blogPostPort";
 
-export const blogAdapter = (): ATProtoPort => ({
+export const blogAdapter = (): BlogPostPort => ({
 	getPosts: async (): Promise<Post[]> => {
 		const posts = await getPosts(undefined);
 		return posts.map((post) => ({

@@ -1,5 +1,5 @@
-import type { ATProtoPort } from "@/ports/output/atprotoPort";
+import type { BlogPostPort } from '@/ports/output/blogPostPort'
 
-export const getProfile = async (atproto: ATProtoPort) => {
-	return atproto.getProfile();
-};
+export const getProfile = async (blogPostPort: BlogPostPort) => {
+  return blogPostPort.getProfile()
+}
