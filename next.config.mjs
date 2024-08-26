@@ -30,7 +30,10 @@ const nextConfig = {
     LASTFM_API_KEY: process.env.LASTFM_API_KEY,
     LASTFM_USERNAME: process.env.LASTFM_USERNAME,
     SITE_URL: process.env.SITE_URL,
-    ENV: process.env.ENV,
+    ATP_DID: process.env.ATP_DID,
+    ATP_IDENTIFIER: process.env.ATP_IDENTIFIER,
+    ATP_SERVICE: process.env.ATP_SERVICE,
+    REDIS_URL: process.env.REDIS_URL,
   },
   images: {
     domains: [
