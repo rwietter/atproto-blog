@@ -33,7 +33,7 @@ const nextConfig = {
     ATP_DID: process.env.ATP_DID,
     ATP_IDENTIFIER: process.env.ATP_IDENTIFIER,
     ATP_SERVICE: process.env.ATP_SERVICE,
-    REDIS_URL: process.env.REDIS_URL,
+    ATP_PASSWORD: process.env.ATP_APP_PASSWORD,
   },
   images: {
     domains: [

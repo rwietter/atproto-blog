@@ -15,7 +15,7 @@ export const getCachedPosts = async (): Promise<Post[] | null> => {
 };
 
 export const setCachedPosts = async (posts: Post[]): Promise<void> => {
-	await redisClient.set("posts", JSON.stringify(posts), "EX", 60);
+	await redisClient.set("posts", JSON.stringify(posts), "EX", 3600);
 };
 
 export const getCachedPost = async (id: string): Promise<Post | null> => {
@@ -27,7 +27,7 @@ export const getCachedPost = async (id: string): Promise<Post | null> => {
 };
 
 export const setCachedPost = async (post: Post): Promise<void> => {
-	await redisClient.set(post.id, JSON.stringify(post), "EX", 60 * 10);
+	await redisClient.set(post.id, JSON.stringify(post), "EX", 3600);
 };
 
 export const getCachedProfile = async (): Promise<Profile | null> => {
@@ -39,5 +39,5 @@ export const getCachedProfile = async (): Promise<Profile | null> => {
 };
 
 export const setCachedProfile = async (profile: Profile) => {
-	await redisClient.set("profile", JSON.stringify(profile), "EX", 60 * 10);
+	await redisClient.set("profile", JSON.stringify(profile), "EX", 3600);
 };

@@ -2,6 +2,7 @@ import { Failure, Success } from "@/common/fp/Result";
 import { getPost } from "@/core/usecases/getBlogPost";
 import { getBlogPosts } from "@/core/usecases/getBlogPosts";
 import { getProfile } from "@/core/usecases/getProfile";
+import { atProtoAuthenticate } from "@/infra/api/atproto/agent";
 import type { BlogPostPort } from "@/ports/output/blogPostPort";
 import { getReadingTime } from "@/utils/getTimeReading";
 import { getMdxSource } from "@/utils/mdx/serializeMdx";
@@ -9,22 +10,21 @@ import { getMdxSource } from "@/utils/mdx/serializeMdx";
 export const createBlogService = (blogPostPort: BlogPostPort) => ({
 	getBlogData: async () => {
 		try {
-			const [posts, profile] = await Promise.all([
-				getBlogPosts(blogPostPort),
-				getProfile(blogPostPort),
-			]);
+			const posts = await getBlogPosts(blogPostPort);
 
 			const postsFiltered = posts.filter(
 				(post) => !post.content?.startsWith("NOT_LIVE"),
 			);
 
-			return Success({ posts: postsFiltered, profile });
+			return Success({ posts: postsFiltered });
 		} catch (error) {
 			return Failure(new Error("Failed to get posts"));
 		}
 	},
 	getBlogPost: async (slug: string) => {
 		try {
+			await atProtoAuthenticate();
+
 			const [post, profile] = await Promise.all([
 				getPost(blogPostPort, slug),
 				getProfile(blogPostPort),
@@ -43,6 +43,7 @@ export const createBlogService = (blogPostPort: BlogPostPort) => ({
 				readingTime: readTime,
 			});
 		} catch (error) {
+			console.log(error);
 			return Failure(new Error("Failed to get posts"));
 		}
 	},
