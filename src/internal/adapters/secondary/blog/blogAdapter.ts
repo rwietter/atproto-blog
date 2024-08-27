@@ -1,28 +1,38 @@
-import type { Post } from "@/core/entities/Post";
-import type { Profile } from "@/core/entities/Profile";
-import { getPost, getPosts, getProfile } from "@/infra/api/atproto";
-import type { BlogPostPort } from "@/ports/output/blogPostPort";
+import { isErr } from '@/common/fp/Result'
+import type { Post } from '@/core/entities/Post'
+import type { Profile } from '@/core/entities/Profile'
+import { getPost, getPosts, getProfile } from '@/infra/api/atproto'
+import type { BlogPostPort } from '@/ports/output/blogPostPort'
 
 export const blogAdapter = (): BlogPostPort => ({
-	getPosts: async (): Promise<Post[]> => {
-		const posts = await getPosts(undefined);
-		return posts.map((post) => ({
-			id: post.id,
-			title: post.title,
-			content: post.content,
-			createdAt: post.createdAt,
-			cid: post.cid,
-			banner: post.banner,
-		}));
-	},
+  getPosts: async (): Promise<Post[]> => {
+    const posts = await getPosts(undefined)
 
-	getProfile: async (): Promise<Profile> => {
-		const profile = getProfile();
-		return profile;
-	},
+    if (isErr(posts)) throw new Error('Failed to get posts')
 
-	getPost: async (slug: string): Promise<Post> => {
-		const post = await getPost(slug);
-		return post;
-	},
-});
+    return posts.value.map((post) => ({
+      id: post.id,
+      title: post.title,
+      content: post.content,
+      createdAt: post.createdAt,
+      cid: post.cid,
+      banner: post.banner,
+    }))
+  },
+
+  getProfile: async (): Promise<Profile> => {
+    const profile = await getProfile()
+
+    if (isErr(profile)) throw new Error('Failed to get profile')
+
+    return profile.value
+  },
+
+  getPost: async (slug: string): Promise<Post> => {
+    const post = await getPost(slug)
+
+    if (isErr(post)) throw new Error('Failed to get post')
+
+    return post.value
+  },
+})

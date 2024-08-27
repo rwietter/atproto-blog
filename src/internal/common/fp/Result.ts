@@ -1,41 +1,41 @@
 export type Result<T, E = Error> =
-	| { status: "Success"; value: T }
-	| { status: "Failure"; error: E };
+	| { status: "Ok"; value: T }
+	| { status: "Err"; error: E };
 
-export const Success = <T>(value: T): Result<T> => ({
-	status: "Success",
+export const Ok = <T>(value: T): Result<T> => ({
+	status: "Ok",
 	value,
 });
 
-export const Failure = <E = Error>(error: E): Result<never, E> => ({
-	status: "Failure",
+export const Err = <E = Error>(error: E): Result<never, E> => ({
+	status: "Err",
 	error,
 });
 
-export const isSuccess = <T, E>(
+export const isOk = <T, E>(
 	result: Result<T, E>,
-): result is { status: "Success"; value: T } => result.status === "Success";
+): result is { status: "Ok"; value: T } => result.status === "Ok";
 
-export const isFailure = <T, E>(
+export const isErr = <T, E>(
 	result: Result<T, E>,
-): result is { status: "Failure"; error: E } => result.status === "Failure";
+): result is { status: "Err"; error: E } => result.status === "Err";
 
 export const fold = <T, E, U>(
 	result: Result<T, E>,
-	onSuccess: (value: T) => U,
-	onFailure: (error: E) => U,
-): U => (isSuccess(result) ? onSuccess(result.value) : onFailure(result.error));
+	onOk: (value: T) => U,
+	onErr: (error: E) => U,
+): U => (isOk(result) ? onOk(result.value) : onErr(result.error));
 
 export const map = <T, U>(result: Result<T>, f: (value: T) => U): Result<U> =>
-	isSuccess(result) ? Success(f(result.value)) : result;
+	isOk(result) ? Ok(f(result.value)) : result;
 
 export const flatMap = <T, E, U>(
 	result: Result<T, E>,
 	f: (value: T) => Result<U, E>,
-): Result<U, E> => (isSuccess(result) ? f(result.value) : result);
+): Result<U, E> => (isOk(result) ? f(result.value) : result);
 
 export const getOrElse = <T, E>(result: Result<T, E>, defaultValue: T): T =>
-	isSuccess(result) ? result.value : defaultValue;
+	isOk(result) ? result.value : defaultValue;
 
 export const toError = (err: unknown): Error =>
 	err instanceof Error ? err : new Error(String(err));

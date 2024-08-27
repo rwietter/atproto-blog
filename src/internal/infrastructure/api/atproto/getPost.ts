@@ -1,13 +1,10 @@
-/**
- * Credits @haileyok <https://github.com/haileyok>
- * Based on <https://github.com/haileyok/blug>
- */
-
+import { Err, Ok, type Result, isErr } from '@/common/fp/Result'
+import type { Post } from '@/core/entities/Post'
 import { atpAgent } from './agent'
 import type { WhtwndBlogEntryRecord } from './atproto'
 import { whtwndBlogEntryRecordToView } from './dataToView'
 
-export const getPost = async (rkey: string) => {
+export const getPost = async (rkey: string): Promise<Result<Post>> => {
   const repo = process.env.ATP_IDENTIFIER as string
 
   const res = await atpAgent.com.atproto.repo.getRecord({
@@ -16,9 +13,7 @@ export const getPost = async (rkey: string) => {
     rkey,
   })
 
-  if (!res.success) {
-    throw new Error('Failed to get post.')
-  }
+  if (!res.success) return Err(new Error('Failed to get post'))
 
   const post = whtwndBlogEntryRecordToView({
     uri: res.data.uri,
@@ -26,5 +21,7 @@ export const getPost = async (rkey: string) => {
     value: res.data.value as WhtwndBlogEntryRecord,
   })
 
-  return post
+  if (isErr(post)) return Err(new Error('Failed to convert post'))
+
+  return Ok(post.value)
 }

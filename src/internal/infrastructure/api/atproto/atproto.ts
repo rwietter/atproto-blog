@@ -1,8 +1,3 @@
-/**
- * Credits @haileyok <https://github.com/haileyok>
- * Based on <https://github.com/haileyok/blug>
- */
-
 export interface WhtwndBlogEntryRecord {
   $type: 'com.whtwnd.blog.entry'
   content?: string
