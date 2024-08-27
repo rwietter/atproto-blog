@@ -1,12 +1,7 @@
-/**
- * Credits @haileyok <https://github.com/haileyok>
- * Based on <https://github.com/haileyok/blug>
- */
+import { Err, Ok, type Result } from "@/common/fp/Result";
 
-export const uriToRkey = (uri: string): string => {
-  const rkey = uri.split('/').pop()
-  if (!rkey) {
-    throw new Error('Failed to get rkey from uri.')
-  }
-  return rkey
-}
+export const uriToRkey = (uri: string): Result<string> => {
+	const rkey = uri.split("/").pop();
+	if (!rkey) return Err(new Error("Failed to convert uri to rkey"));
+	return Ok(rkey);
+};

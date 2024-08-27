@@ -1,7 +1,7 @@
 import { fetcherLastFm } from '@/infra/api/lastfm/fetcherLastFm'
 import type { RecentTrackProps } from '@/infra/api/lastfm/types'
 
-import { Failure, Success, isFailure } from '@/common/fp/Result'
+import { Err, Ok, isErr } from '@/common/fp/Result'
 import { fetcherWeather } from '@/infra/api/weather/fetcherWeather'
 import type { Weather } from '@/infra/api/weather/types'
 import CurrentDate from '@/ui/components/CurrentDate'
@@ -22,16 +22,16 @@ async function getData() {
       fetcherLastFm(),
     ])
 
-    return Success({ weather, lastfm })
+    return Ok({ weather, lastfm })
   } catch (error) {
-    return Failure(new Error('Failed to fetch weather and lastfm'))
+    return Err(new Error('Failed to fetch weather and lastfm'))
   }
 }
 
 const AuthorContent = async () => {
   const data = await getData()
 
-  if (isFailure(data)) return <div /> // ignore this infos
+  if (isErr(data)) return <div />
 
   return (
     <section className={styles.content_container}>
@@ -55,7 +55,7 @@ export const author: Author = {
   name: 'Maurício Witter',
   username: 'rwietter',
   biography:
-    "I'm a brazilian Software Developer, student and a writer. I'm currently working as a Fullstack Developer. I love to write about my experiences and contribute to the community.",
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
   avatar: 'https://i.pravatar.cc/150?img=1',
 }
 

@@ -1,12 +1,12 @@
 <h2 align="center">AT Proto WhiteWind | Blog Template</h2>
 
-This is a personal website and blog built with the **[AT Protocol](https://atproto.com/guides/overview)**, **[WhiteWind](https://whtwnd.com/about)**, and **Next.js**. The architecture of the project is based on Ports and Adapters, but it's very simple to understand, use, and customize.
+This is a personal website and blog built with **[AT Protocol](https://atproto.com/guides/overview)**, **[WhiteWind](https://whtwnd.com/about)**, and **Next.js**. The architecture of the project is based on Ports and Adapters, yet it is straightforward to understand, use, and customize.
 
-Credits to [@haileyok](https://github.com/haileyok) for inspiring me to create this project and for the atproto API source code.
+It is inspired by the **[AT Proto](https://atproto.com)** and **[WhiteWind](https://whtwnd.com)** projects, as well as [@haileyok](https://github.com/haileyok). This template serves as an excellent starting point for a personal website or blog.
 
 ## License
 
-The source code is under the [MIT license](LICENSE), and the blog posts are under the [CC BY-SA 4.0](LICENSE-posts) license.
+The source code is licensed under the [MIT License](LICENSE), while the blog posts are licensed under [CC BY-SA 4.0](LICENSE-posts).
 
 [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa] [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 

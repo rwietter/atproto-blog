@@ -1,4 +1,4 @@
-import { Failure, Success } from "@/common/fp/Result";
+import { Err, Ok } from "@/common/fp/Result";
 import { getPost } from "@/core/usecases/getBlogPost";
 import { getBlogPosts } from "@/core/usecases/getBlogPosts";
 import { getProfile } from "@/core/usecases/getProfile";
@@ -16,9 +16,9 @@ export const createBlogService = (blogPostPort: BlogPostPort) => ({
 				(post) => !post.content?.startsWith("NOT_LIVE"),
 			);
 
-			return Success({ posts: postsFiltered });
+			return Ok({ posts: postsFiltered });
 		} catch (error) {
-			return Failure(new Error("Failed to get posts"));
+			return Err(new Error("Failed to get posts"));
 		}
 	},
 	getBlogPost: async (slug: string) => {
@@ -34,9 +34,9 @@ export const createBlogService = (blogPostPort: BlogPostPort) => ({
 			const mdxSource = await getMdxSource(post.content);
 
 			if (!mdxSource)
-				return Failure(new Error("Is not possible parse post content"));
+				return Err(new Error("Is not possible to parse post content"));
 
-			return Success({
+			return Ok({
 				post,
 				profile,
 				mdxSource,
@@ -44,7 +44,7 @@ export const createBlogService = (blogPostPort: BlogPostPort) => ({
 			});
 		} catch (error) {
 			console.log(error);
-			return Failure(new Error("Failed to get posts"));
+			return Err(new Error("Failed to get posts"));
 		}
 	},
 });
